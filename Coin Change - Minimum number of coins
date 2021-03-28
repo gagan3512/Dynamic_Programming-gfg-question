@@ -1,0 +1,27 @@
+class Solution
+{
+    //Complete this function
+    public long minimumNumberOfCoins(int coins[],int numberOfCoins,int value)
+    {
+        // your code here
+        int dp[] = new int[value+1];
+        dp[0]=0;
+        for(int i=1;i<=value;i++)
+        {
+            dp[i]=value+1;
+        }
+        for(int i=1;i<=value;i++)
+        {
+            for(int j=0;j<numberOfCoins;j++)
+            {
+                if(i>=coins[j])
+                {
+                    dp[i] = Math.min((dp[i-coins[j]]+1),dp[i]);
+                }
+            }
+        }
+        if(dp[value]==(value+1))
+        return -1;
+        return dp[value];
+    }
+}
