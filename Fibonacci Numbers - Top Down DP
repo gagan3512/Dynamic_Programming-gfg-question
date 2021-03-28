@@ -1,0 +1,19 @@
+class Solution
+{
+    //Complete this function
+    public long findNthFibonacci(int number, long dp[])
+    {
+        // Your Code Here
+        if(dp[number]==0)
+        {
+            if(number==0 || number==1 || number==2)
+            return dp[number];
+            else
+            {
+                dp[number]=findNthFibonacci(number-1,dp) + findNthFibonacci(number-2,dp);
+            }
+        }
+        return dp[number];
+    }
+
+}
